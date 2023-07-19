@@ -8,7 +8,7 @@
 body {
   min-height: 100vh;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
   background: #4070f4;
 }
@@ -18,37 +18,72 @@ body {
   width: 100%;
   background: #fff;
   padding: 34px;
+  padding-top: 5px;
   padding-bottom: 10px;
   border-radius: 6px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
-.wrapper h2 {
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.yakeen {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.yakeen img {
+  width: 50px;
+}
+
+.wrapper .title {
+  margin: auto;
   position: relative;
-  font-size: 22px;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #333;
 }
-.wrapper h2::before {
+.wrapper .title::before {
   content: "";
   position: absolute;
   left: 0;
   bottom: 0;
   height: 3px;
-  width: 28px;
+  width: 30px;
   border-radius: 12px;
   background: #4070f4;
 }
 .wrapper form {
-  margin-top: 30px;
+  margin-top: 25px;
 }
+
 .wrapper form .input-box {
   height: 52px;
   margin: 10px 10px;
   display: flex;
   align-items: center;
 }
-form .input-box label {
+
+.input-box label {
   flex: 1;
+}
+
+.input-box input {
+  flex: 9.5;
+}
+
+.input-box-container .input-box input,
+.input-box-container .input-box select {
+  flex: 4;
+}
+
+form .input-box label {
   color: #707070;
   font-size: 17px;
   font-weight: 500;
@@ -56,7 +91,6 @@ form .input-box label {
 }
 form .input-box input,
 form .input-box select {
-  flex: 4;
   height: 100%;
   width: 100%;
   outline: none;
@@ -125,8 +159,24 @@ form .text h3 a:hover {
 }
 
 @media (max-width: 768px) {
+  .wrapper {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .wrapper .yakeen {
+    font-size: 0.8rem;
+  }
+  .wrapper .title {
+    font-size: 1.2rem;
+  }
+  .wrapper .title::before {
+    width: 20px;
+    height: 2px;
+  }
+
   .wrapper form .input-box {
     display: block;
+    height: 40px;
     margin-bottom: 40px;
   }
   .wrapper form .question {
@@ -138,5 +188,8 @@ form .text h3 a:hover {
   }
   .wrapper form .input-box.button {
     margin-top: 30px;
+  }
+  .question input:placeholder-shown {
+    font-size: 11px;
   }
 }
