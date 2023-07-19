@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h2>Registration</h2>
+      <form action="" method="POST" id="registrationform">
+        <div class="input-box">
+          <label for="name">Full name:</label>
+          <input
+            type="text"
+            name="name"
+            value=""
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+        </div>
+        <div class="input-box-container">
+          <div class="input-box">
+            <label for="Fname">Father's name:</label>
+            <input
+              type="text"
+              name="Fname"
+              value=""
+              id="Fname"
+              placeholder="Enter your father's name"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="Mname">Mother's name:</label>
+            <input
+              type="text"
+              name="Mname"
+              value=""
+              id="Mname"
+              placeholder="Enter your mother's name"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="phone">Mobile No:</label>
+            <input
+              type="tel"
+              name="phone"
+              value=""
+              id="phone"
+              placeholder="Enter mobile number"
+              value=""
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="Ephone">Emergency Mobile No:</label>
+            <input
+              type="tel"
+              name="Ephone"
+              value=""
+              id="Ephone"
+              placeholder="Enter mobile number"
+              value=""
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="email">Email:</label>
+            <input
+              type="text"
+              name="email"
+              value=""
+              id="email"
+              placeholder="Enter your email"
+              value=""
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="DOB">Day of Birth:</label>
+            <input
+              type="date"
+              name="DOB"
+              value=""
+              id="DOB"
+              placeholder="Enter date of birth"
+              value=""
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender" required>
+              <option value="">Please select one…</option>
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="non-binary">Non-Binary</option>
+              <option value="other">Other</option>
+              <option value="Prefer not to answer">Perfer not to Answer</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <label for="address">Address:</label>
+            <input
+              type="text"
+              name="address"
+              value=""
+              id="address"
+              placeholder="Enter your address"
+              value=""
+              required
+            />
+          </div>
+        </div>
+        <div class="input-box">
+          <label for="course">Course name:</label>
+          <input
+            type="text"
+            name="course"
+            value=""
+            id="course"
+            placeholder="Enter course name"
+            required
+          />
+        </div>
+        <div class="input-box-container">
+          <div class="input-box">
+            <label for="batch">Batch timing:</label>
+            <input
+              type="text"
+              name="batch"
+              value=""
+              id="batch"
+              placeholder="Enter batch timing"
+              required
+            />
+          </div>
+          <div class="input-box">
+            <label for="branch">Branch name:</label>
+            <input
+              type="text"
+              name="branch"
+              value=""
+              id="branch"
+              placeholder="Enter branch name"
+              required
+            />
+          </div>
+        </div>
+        <div class="input-box question">
+          <input
+            type="text"
+            name="scholarship"
+            value=""
+            id="scholarship"
+            placeholder="Mention any scholarship you have"
+          />
+        </div>
+        <div class="input-box question">
+          <input
+            type="text"
+            name="Acourse"
+            value=""
+            id="Acourse"
+            placeholder="Do You Plan To Shift To Another Course?"
+          />
+        </div>
+        <div class="input-box question">
+          <input
+            type="text"
+            name="after"
+            value=""
+            id="after"
+            placeholder="What Is Your Plan After Course?"
+          />
+        </div>
+        <div class="input-box button">
+          <input type="Submit" value="Register Now" sendMessage() />
+        </div>
+      </form>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAiL0LL6F6UP_QZwm4gA6SUqX44qQBID8U",
+        authDomain: "course-registration-ac25d.firebaseapp.com",
+        projectId: "course-registration-ac25d",
+        storageBucket: "course-registration-ac25d.appspot.com",
+        messagingSenderId: "57390343090",
+        appId: "1:57390343090:web:da9c4e4b4a9d32c6213aab",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+      //listen for submit event//(1)
+      document
+        .getElementById("registrationform")
+        .addEventListener("submit", formSubmit);
+
+      //Submit form(2)
+      function formSubmit(e) {
+        e.preventDefault();
+        // Get Values from the DOM
+        let name = document.querySelector("#name").value;
+        let Fname = document.querySelector("#Fname").value;
+        let Mname = document.querySelector("#Mname").value;
+        let phone = document.querySelector("#phone").value;
+        let Ephone = document.querySelector("#Ephone").value;
+        let email = document.querySelector("#email").value;
+        let DOB = document.querySelector("#DOB").value;
+        let gender = document.querySelector("#gender").value;
+        let address = document.querySelector("#address").value;
+        let course = document.querySelector("#course").value;
+        let batch = document.querySelector("#batch").value;
+        let branch = document.querySelector("#branch").value;
+        let scholarship = document.querySelector("#scholarship").value;
+        let Acourse = document.querySelector("#Acourse").value;
+        let after = document.querySelector("#after").value;
+
+        //send message values(3)
+        sendMessage(
+          name,
+          Fname,
+          Mname,
+          phone,
+          Ephone,
+          email,
+          DOB,
+          gender,
+          address,
+          course,
+          batch,
+          branch,
+          scholarship,
+          Acourse,
+          after
+        );
+      }
+
+      //Send Message to Firebase(4)
+      function sendMessage(
+        name,
+        Fname,
+        Mname,
+        phone,
+        Ephone,
+        email,
+        DOB,
+        gender,
+        address,
+        course,
+        batch,
+        branch,
+        scholarship,
+        Acourse,
+        after
+      ) {
+        const database = getDatabase();
+
+        set(
+          ref(database, "users/" + name + Math.floor(Math.random() * 1000000)),
+          {
+            name: name,
+            Fname: Fname,
+            Mname: Mname,
+            phone: phone,
+            Ephone: Ephone,
+            email: email,
+            DOB: DOB,
+            gender: gender,
+            address: address,
+            course: course,
+            batch: batch,
+            branch: branch,
+            scholarship: scholarship,
+            Acourse: Acourse,
+            after: after,
+          }
+        )
+          .then(() => {
+            // document.getElementById("registrationform").reset();
+            window.location.href = "/index.html";
+          })
+          .catch((error) => {
+            alert(error);
+          });
+      }
+    </script>
+  </body>
+</html>
