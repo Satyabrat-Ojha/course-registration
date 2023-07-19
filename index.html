@@ -291,8 +291,10 @@
           }
         )
           .then(() => {
-            // document.getElementById("registrationform").reset();
-            window.location.href = "/index.html";
+            alert("Data sent to firebase");
+            document.getElementById("registrationform").reset();
+
+            //TODO
           })
           .catch((error) => {
             alert(error);
