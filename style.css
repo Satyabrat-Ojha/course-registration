@@ -74,7 +74,8 @@ body {
   flex: 1;
 }
 
-.input-box input {
+.input-box input,
+.input-box select {
   flex: 9.5;
 }
 
@@ -108,6 +109,10 @@ form .input-box select {
 .input-box select:focus,
 .input-box select:valid {
   border-color: #4070f4;
+}
+
+#price {
+  background-color: #e6e6e6;
 }
 
 .input-box-container {

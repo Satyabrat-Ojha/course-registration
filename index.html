@@ -123,19 +123,22 @@
               required
             />
           </div>
-        </div>
-        <div class="input-box">
-          <label for="course">Course name:</label>
-          <input
-            type="text"
-            name="course"
-            value=""
-            id="course"
-            placeholder="Enter course name"
-            required
-          />
-        </div>
-        <div class="input-box-container">
+          <div class="input-box">
+            <label for="course">Course name:</label>
+            <select name="course" id="course" required></select>
+          </div>
+          <div class="input-box">
+            <label for="price">Price:</label>
+            <input
+              type="text"
+              name="price"
+              value=""
+              id="price"
+              placeholder="select course to see price"
+              value=""
+              readonly
+            />
+          </div>
           <div class="input-box">
             <label for="batch">Batch timing:</label>
             <input
@@ -192,6 +195,8 @@
       </form>
     </div>
 
+    <script src="courses.js"></script>
+
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
@@ -232,6 +237,7 @@
         let gender = document.querySelector("#gender").value;
         let address = document.querySelector("#address").value;
         let course = document.querySelector("#course").value;
+        let price = document.querySelector("#price").value;
         let batch = document.querySelector("#batch").value;
         let branch = document.querySelector("#branch").value;
         let scholarship = document.querySelector("#scholarship").value;
@@ -250,6 +256,7 @@
           gender,
           address,
           course,
+          price,
           batch,
           branch,
           scholarship,
@@ -270,6 +277,7 @@
         gender,
         address,
         course,
+        price,
         batch,
         branch,
         scholarship,
@@ -294,6 +302,7 @@
             gender: gender,
             address: address,
             course: course,
+            price: price,
             batch: batch,
             branch: branch,
             scholarship: scholarship,
@@ -302,10 +311,7 @@
           }
         )
           .then(() => {
-            alert("Data sent to firebase");
-            document.getElementById("registrationform").reset();
-
-            //TODO
+            document.location.href = `payment.html?course=${course}`;
           })
           .catch((error) => {
             alert(error);
