@@ -166,6 +166,9 @@ form .input-box select {
 .wrapper form .question {
   height: 40px;
 }
+.wrapper form .question label {
+  display: none;
+}
 
 form .policy {
   display: flex;
@@ -228,15 +231,17 @@ form .text h3 a:hover {
   }
   .wrapper form .question {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 70px;
   }
+
+  .wrapper form .question label {
+    display: block;
+  }
+
   .input-box-container {
     display: block;
   }
   .wrapper form .input-box.button {
-    margin-top: 30px;
-  }
-  .question input:placeholder-shown {
-    font-size: 11px;
+    margin-top: 80px;
   }
 }
