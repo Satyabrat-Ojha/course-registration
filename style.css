@@ -124,10 +124,13 @@ form .input-box select {
 .files {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin: 30px 20px;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.file {
+  width: 30%;
 }
 
 .file span {
@@ -208,6 +211,12 @@ form .text h3 a:hover {
   text-decoration: underline;
 }
 
+@media (max-width: 1200px) {
+  .file {
+    width: 40%;
+  }
+}
+
 @media (max-width: 768px) {
   .wrapper {
     padding-left: 10px;
@@ -229,6 +238,15 @@ form .text h3 a:hover {
     height: 40px;
     margin-bottom: 40px;
   }
+
+  .file {
+    width: 80%;
+    max-width: 250px;
+  }
+  .box p {
+    padding: 1.5rem 1rem;
+  }
+
   .wrapper form .question {
     display: block;
     margin-bottom: 70px;
